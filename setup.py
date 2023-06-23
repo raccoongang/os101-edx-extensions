@@ -45,5 +45,10 @@ setup(
     include_package_data=True,
     install_requires=load_requirements('requirements/base.in'),
     zip_safe=False,
-    entry_points={"lms.djangoapp": [APP_NAME]},
+    entry_points={
+        "openedx.course_tab": [
+            "dates = nasa_edx_extensions.tabs:DatesTabUnabled",
+            "discussion = nasa_edx_extensions.tabs:DiscussionTabRedirect",
+        ],
+    },
 )
