@@ -12,4 +12,4 @@ class DiscussionTabRedirect(DiscussionTab):
     @property
     def link_func(self):
         # TODO: transform hardcoded link to site config/settings variable with default value
-        return lambda course, reverse_func: "https://github.com/nasa/Transform-to-Open-Science"
+        return lambda course, reverse_func: "https://github.com/nasa/Transform-to-Open-Science/discussions"
