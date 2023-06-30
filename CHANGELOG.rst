@@ -12,7 +12,13 @@ Change Log
 Unreleased
 ----------
 
-*
+
+[v1.1.0] - 2022-06-26
+~~~~~~~~~~~~~~~~~~~~~
+* Add new model CredlyCourseData for store user`s Badge ID.
+* Override advanced_settings_handler view
+  where the logic for getting and updating the Credly Badge Template ID field
+  has been changed.
 
 [1.0.0] - 2023-06-23
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

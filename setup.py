@@ -14,7 +14,14 @@ with open("README.rst", "r") as fh:
 
 
 VERSION = get_version('nasa_edx_extensions', '__init__.py')
-APP_NAME = "nasa_edx_extensions = nasa_edx_extensions.apps:NasaEdxExtensionsConfig"
+APP_NAMES = [
+    "nasa_edx_extensions = nasa_edx_extensions.apps:NasaEdxExtensionsConfig",
+    "credly_integration = credly_integration.apps:CredlyIntegraionConfig",
+]
+PACKAGES = [
+    "nasa_edx_extensions",
+    "credly_integration",
+]
 
 
 setup(
@@ -39,9 +46,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.8',
     ],
-    packages=[
-        'nasa_edx_extensions',
-    ],
+    packages=PACKAGES,
     include_package_data=True,
     install_requires=load_requirements('requirements/base.in'),
     zip_safe=False,
@@ -50,5 +55,6 @@ setup(
             "dates = nasa_edx_extensions.tabs:DatesTabUnabled",
             "discussion = nasa_edx_extensions.tabs:DiscussionTabRedirect",
         ],
+        "cms.djangoapp": APP_NAMES,
     },
 )
