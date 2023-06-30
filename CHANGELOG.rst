@@ -12,6 +12,9 @@ Change Log
 Unreleased
 ----------
 
+[v1.2.0] - 2022-06-30
+~~~~~~~~~~~~~~~~~~~~~
+* Rename discussion tab to `Community`
 
 [v1.1.0] - 2022-06-26
 ~~~~~~~~~~~~~~~~~~~~~
