@@ -17,10 +17,12 @@ VERSION = get_version('nasa_edx_extensions', '__init__.py')
 APP_NAMES = [
     "nasa_edx_extensions = nasa_edx_extensions.apps:NasaEdxExtensionsConfig",
     "credly_integration = credly_integration.apps:CredlyIntegraionConfig",
+    "user_extensions = user_extensions.apps:UserExtensionsConfig",
 ]
 PACKAGES = [
     "nasa_edx_extensions",
     "credly_integration",
+    "user_extensions"
 ]
 
 
@@ -56,5 +58,6 @@ setup(
             "discussion = nasa_edx_extensions.tabs:DiscussionTabRedirect",
         ],
         "cms.djangoapp": APP_NAMES,
+        "lms.djangoapp": APP_NAMES,
     },
 )

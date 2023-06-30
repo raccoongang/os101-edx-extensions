@@ -12,6 +12,14 @@ Change Log
 Unreleased
 ----------
 
+[v1.3.0] - 2022-07-03
+~~~~~~~~~~~~~~~~~~~~~
+* Add `generate_credly_data_csv`` for generate csv report.
+* Override `do_create_account`` for adding
+  fields `first_name`, `middle_name` and `last_name`.
+* Create `user_extensions`` app for extending user functionality.
+* Create new model `ExtendedUserProfile` to store `middle_name`.
+
 [v1.2.0] - 2022-06-30
 ~~~~~~~~~~~~~~~~~~~~~
 * Rename discussion tab to `Community`

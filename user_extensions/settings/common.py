@@ -1,5 +1,5 @@
 """
-Common Django settings for credly_integration app.
+Common Django settings for user_extensions app.
 """
 
 
@@ -10,5 +10,4 @@ def plugin_settings(settings):
 
     More info: https://github.com/edx/edx-platform/blob/master/openedx/core/djangoapps/plugins/README.rst
     """
-    settings.OVERRIDE_ADVANCED_SETTINGS_HANDLER = 'credly_integration.overrides.advanced_settings_handler'
-    settings.INSTALLED_APPS += ["admin_extra_buttons",]
+    settings.OVERRIDE_DO_CREATE_ACCOUNT = 'user_extensions.overrides.do_create_account'
