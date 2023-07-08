@@ -12,6 +12,7 @@ def plugin_settings(settings):
     """
     settings.OVERRIDE_DO_CREATE_ACCOUNT = 'user_extensions.overrides.do_create_account'
     if settings.FEATURES.get("ENABLE_NASA_EXTENDED_REG_FORM", True):
+        settings.ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
         settings.REGISTRATION_EXTENSION_FORM = 'user_extensions.forms.ExtendedUserProfileForm'
         settings.NASA_EXTENDED_PROFILE_FIELDS = [
             "orcid_id",
