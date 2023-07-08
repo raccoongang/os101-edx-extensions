@@ -12,6 +12,13 @@ Change Log
 Unreleased
 ----------
 
+[v1.4.0] - 2022-07-08
+~~~~~~~~~~~~~~~~~~~~~
+* Extend model `ExtendedUserProfile` to store other extended fields from register page.
+* Override `authn_field_can_be_saved` and `modify_error_message_for_fields`.
+* Create `ExtendedUserProfileForm` form to pass new fields to frontend-app-authn.
+* Extend settings with new registration fields.
+
 [v1.3.0] - 2022-07-03
 ~~~~~~~~~~~~~~~~~~~~~
 * Add `generate_credly_data_csv`` for generate csv report.
