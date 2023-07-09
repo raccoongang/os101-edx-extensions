@@ -12,6 +12,10 @@ Change Log
 Unreleased
 ----------
 
+[v1.4.2] - 2023-07-09
+~~~~~~~~~~~~~~~~~~~~~
+* Turn off user_extensions app for cms
+
 [v1.4.1] - 2023-07-09
 ~~~~~~~~~~~~~~~~~~~~~
 * Introduce feature flag `ENABLE_CREDLY_INTEGRATION` to turn on credly integration feature.

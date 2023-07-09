@@ -24,17 +24,6 @@ class UserExtensionsConfig(AppConfig):
     # Class attribute that configures and enables this app as a Plugin App.
     plugin_app = {
         PluginSettings.CONFIG: {
-            ProjectType.CMS: {
-                SettingsType.COMMON: {
-                    PluginSettings.RELATIVE_PATH: 'settings.common',
-                },
-                SettingsType.DEVSTACK: {
-                    PluginSettings.RELATIVE_PATH: 'settings.common',
-                },
-                SettingsType.PRODUCTION: {
-                    PluginSettings.RELATIVE_PATH: 'settings.common',
-                },
-            },
             ProjectType.LMS: {
                 SettingsType.COMMON: {
                     PluginSettings.RELATIVE_PATH: 'settings.common',
