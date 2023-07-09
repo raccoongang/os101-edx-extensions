@@ -22,6 +22,7 @@ LMS_APP_NAMES = [
 CMS_APP_NAMES = [
     "nasa_edx_extensions = nasa_edx_extensions.apps:NasaEdxExtensionsConfig",
     "credly_integration = credly_integration.apps:CredlyIntegraionConfig",
+    "user_extensions = user_extensions.apps:UserExtensionsConfig",
 ]
 PACKAGES = [
     "nasa_edx_extensions",

@@ -12,9 +12,13 @@ Change Log
 Unreleased
 ----------
 
+[v1.4.3] - 2023-07-09
+~~~~~~~~~~~~~~~~~~~~~
+* Fix initialization for cms.
+
 [v1.4.2] - 2023-07-09
 ~~~~~~~~~~~~~~~~~~~~~
-* Turn off user_extensions app for cms
+* Turn off user_extensions app for cms.
 
 [v1.4.1] - 2023-07-09
 ~~~~~~~~~~~~~~~~~~~~~
