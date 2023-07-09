@@ -12,14 +12,18 @@ Change Log
 Unreleased
 ----------
 
-[v1.4.0] - 2022-07-08
+[v1.4.1] - 2023-07-09
+~~~~~~~~~~~~~~~~~~~~~
+* Introduce feature flag `ENABLE_CREDLY_INTEGRATION` to turn on credly integration feature.
+
+[v1.4.0] - 2023-07-08
 ~~~~~~~~~~~~~~~~~~~~~
 * Extend model `ExtendedUserProfile` to store other extended fields from register page.
 * Override `authn_field_can_be_saved` and `modify_error_message_for_fields`.
 * Create `ExtendedUserProfileForm` form to pass new fields to frontend-app-authn.
 * Extend settings with new registration fields.
 
-[v1.3.0] - 2022-07-03
+[v1.3.0] - 2023-07-03
 ~~~~~~~~~~~~~~~~~~~~~
 * Add `generate_credly_data_csv`` for generate csv report.
 * Override `do_create_account`` for adding
@@ -27,11 +31,11 @@ Unreleased
 * Create `user_extensions`` app for extending user functionality.
 * Create new model `ExtendedUserProfile` to store `middle_name`.
 
-[v1.2.0] - 2022-06-30
+[v1.2.0] - 2023-06-30
 ~~~~~~~~~~~~~~~~~~~~~
 * Rename discussion tab to `Community`
 
-[v1.1.0] - 2022-06-26
+[v1.1.0] - 2023-06-26
 ~~~~~~~~~~~~~~~~~~~~~
 * Add new model CredlyCourseData for store user`s Badge ID.
 * Override advanced_settings_handler view
