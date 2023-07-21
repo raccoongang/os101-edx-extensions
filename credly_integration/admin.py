@@ -2,6 +2,8 @@
 Admin registration for credly integration.
 """
 
+import os
+
 from admin_extra_buttons.api import ExtraButtonsMixin, link
 from django.conf import settings
 from django.contrib import admin
@@ -21,9 +23,7 @@ class CredlyCourseDataAdmin(ExtraButtonsMixin, admin.ModelAdmin):
 
     @link(href=None, change_list=True)
     def credly_report(self, button):
-        protocol = 'https' if settings.HTTPS == 'on' else 'http'
-        domain = Site.objects.get_current().domain
         path = reverse("credly_integration:download_report")
 
         button.label = "Credly Report"
-        button.href = f"{protocol}://{domain}{path}"
+        button.href = os.path.join(settings.LMS_ROOT_URL, path)

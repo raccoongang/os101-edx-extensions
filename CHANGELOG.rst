@@ -12,6 +12,10 @@ Change Log
 Unreleased
 ----------
 
+[v1.4.4] - 2023-07-21
+~~~~~~~~~~~~~~~~~~~~~
+* Correct the report link.
+
 [v1.4.3] - 2023-07-09
 ~~~~~~~~~~~~~~~~~~~~~
 * Fix initialization for cms.
