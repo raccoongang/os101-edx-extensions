@@ -21,7 +21,7 @@ class CredlyCourseDataAdmin(ExtraButtonsMixin, admin.ModelAdmin):
     list_display = ('course', 'badge_id',)
     search_fields = ('course',)
 
-    @link(href=None, change_list=True)
+    @link(href=None, change_list=True, change_form=False)
     def credly_report(self, button):
         path = reverse("credly_integration:download_report")
 

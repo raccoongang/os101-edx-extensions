@@ -47,7 +47,7 @@ def generate_credly_data_csv():
             cert.user.first_name,
             extended_user_profile.middle_name if extended_user_profile else "",
             cert.user.last_name,
-            cert.created_date.strftime("%m/%d/%Y"),
+            cert.modified_date.strftime("%m/%d/%Y"),
             '',
             '',
             '',
