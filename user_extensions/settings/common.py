@@ -39,4 +39,5 @@ def plugin_settings(settings):
         settings.REGISTRATION_FIELD_ORDER += settings.NASA_EXTENDED_PROFILE_FIELDS
 
         settings.OVERRIDE_NASA_PROFILE_FIELDS = "user_extensions.overrides.authn_field_can_be_saved"
+        settings.OVERRIDE_THIRD_PARTY_AUTH_CONTEXT = "user_extensions.overrides.third_party_auth_context"
         settings.FIX_REQUIRED_ERROR_MESSAGE = "user_extensions.overrides.modify_error_message_for_fields"

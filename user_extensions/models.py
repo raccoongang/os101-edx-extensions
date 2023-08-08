@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext as _
 
 User = get_user_model()
@@ -55,3 +56,11 @@ class ExtendedUserProfile(models.Model):
     career_stage = models.CharField(max_length=255, choices=CAREER_STAGE_CHOICES, null=True, blank=False, default="college_student")
     extended_gender = models.CharField(max_length=255, choices=EXTENDED_GENDER_CHOICES, null=True, blank=False, default="prefer_not_to_say")
     race_ethnicity = models.CharField(max_length=255, choices=RACE_ETHNICITY_CHOICES, null=True, blank=False, default="prefer_not_to_say")
+
+    def validate_unique(self, *args, **kwargs):
+        super().validate_unique(*args, **kwargs)
+        qs = ExtendedUserProfile.objects.exclude(
+            orcid_id="none"
+        ).filter(orcid_id=self.orcid_id)
+        if qs.exists():
+            raise ValidationError({'orcid_id':['orcid_id must be unique per site',]})

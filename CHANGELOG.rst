@@ -12,6 +12,13 @@ Change Log
 Unreleased
 ----------
 
+[v1.5.4] - 2023-08-10
+~~~~~~~~~~~~~~~~~~~~~
+* Override ORCID social core backend to correctly provide user information.
+* Extend scopes for ORCID SSO.
+* Add sandbox ORCID SSO.
+* Override function for getting third party auth context.
+
 [v1.4.4] - 2023-07-21
 ~~~~~~~~~~~~~~~~~~~~~
 * Correct the report link.
