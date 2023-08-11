@@ -1,9 +1,11 @@
+import logging
 from social_core.backends.orcid import ORCIDOAuth2, ORCIDMemberOAuth2Sandbox
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext as _
-from openedx.core.djangoapps.user_authn.exceptions import AuthFailedError
 
 from ..models import ExtendedUserProfile
+
+
+log = logging.getLogger(__name__)
 
 class ORCIDAuthMixin:
     DEFAULT_SCOPE = ['/authenticate', '/read-limited', '/activities/update', '/person/update']
@@ -15,7 +17,8 @@ class ORCIDAuthMixin:
         try:
             ExtendedUserProfile.ORCID_ID_VALIDATOR(orcid_id)
         except ValidationError:
-            raise AuthFailedError(_('There was an error receiving your ORCID information. Please check your ORCID account.'))
+            log.exception(f"There was an error receiving user ORCID information. Invalid orcid_id: {orcid_id}\nResponse: {response}")
+            orcid_id = "none"
 
         fullname = first_name = last_name = email = ''
         person = response.get('person')
