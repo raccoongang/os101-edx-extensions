@@ -1,5 +1,9 @@
 from social_core.backends.orcid import ORCIDOAuth2, ORCIDMemberOAuth2Sandbox
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext as _
+from openedx.core.djangoapps.user_authn.exceptions import AuthFailedError
 
+from ..models import ExtendedUserProfile
 
 class ORCIDAuthMixin:
     DEFAULT_SCOPE = ['/authenticate', '/read-limited', '/activities/update', '/person/update']
@@ -7,6 +11,12 @@ class ORCIDAuthMixin:
     def get_user_details(self, response):
         """Return user details from ORCID account"""
         orcid_identifier = response.get('orcid-identifier')
+        orcid_id = orcid_identifier.get('path') if orcid_identifier else ''
+        try:
+            ExtendedUserProfile.ORCID_ID_VALIDATOR(orcid_id)
+        except ValidationError:
+            raise AuthFailedError(_('There was an error receiving your ORCID information. Please check your ORCID account.'))
+
         fullname = first_name = last_name = email = ''
         person = response.get('person')
 
@@ -14,9 +24,15 @@ class ORCIDAuthMixin:
             name = person.get('name')
 
             if name:
-                first_name = name.get('given-names', {}).get('value', '')
-                last_name = name.get('family-name', {}).get('value', '')
-                fullname = f"{first_name} {last_name}"
+                first_name = name.get('given-names')
+                first_name = first_name.get('value', '') if first_name else ''
+
+                last_name = name.get('family-name')
+                last_name = last_name.get('value', '') if last_name else ''
+
+                fullname = first_name
+                if last_name:
+                    fullname += f' {last_name}'
 
             emails = person.get('emails')
             if emails:
@@ -37,7 +53,7 @@ class ORCIDAuthMixin:
             'fullname': fullname,
             'first_name': first_name,
             'last_name': last_name,
-            'orcid_id': orcid_identifier['path'],
+            'orcid_id': orcid_id,
             'username': "",
         }
 
