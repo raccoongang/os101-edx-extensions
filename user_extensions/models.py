@@ -11,8 +11,8 @@ class ExtendedUserProfile(models.Model):
     """Extend user with additional data."""
 
     ORCID_ID_VALIDATOR = RegexValidator(
-        r'^\d{4}-\d{4}-\d{4}-\d{4}$|^none$',
-        message=_("ORCID ID must be in the format: '0000-0000-0000-0000' or 'none'")
+        r'^\d{4}-\d{4}-\d{4}-\d{3}([0-9X])$|^none$',
+        message=_("ORCID ID must be in the format: '0000-0000-0000-0000' (last number can be 'X') or 'none'")
     )
 
     SCIENCE_COMMUNITY_CHOICES = [

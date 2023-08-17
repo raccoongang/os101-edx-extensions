@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nasa_edx_extensions',
+    'user_extensions',
 )
 
 # Static files (CSS, JavaScript, Images)
