@@ -13,9 +13,18 @@ def plugin_settings(settings):
     More info: https://github.com/edx/edx-platform/blob/master/openedx/core/djangoapps/plugins/README.rst
     """
     settings.OVERRIDE_DO_CREATE_ACCOUNT = 'user_extensions.overrides.do_create_account'
-    if (settings.FEATURES.get("ENABLE_NASA_EXTENDED_REG_FORM", True)
-        and get_project_type(settings) == ProjectType.LMS):
+    settings.OVERRIDE_GET_ACCOUNT_SETTINGS = "user_extensions.overrides.get_account_settings"
 
+    default_orcid_config = {
+        'BASE_URL': {
+            'orcid': 'https://orcid.org',
+            'orcid-sandbox': 'https://sandbox.orcid.org',
+        }
+    }
+    settings.ORCID_CONFIG = settings.ORCID_CONFIG if hasattr(settings, "ORCID_CONFIG") else default_orcid_config
+
+    if (settings.FEATURES.get("ENABLE_NASA_EXTENDED_REG_FORM", True)
+            and get_project_type(settings) == ProjectType.LMS):
         settings.ENABLE_DYNAMIC_REGISTRATION_FIELDS = True
         settings.REGISTRATION_EXTENSION_FORM = 'user_extensions.forms.ExtendedUserProfileForm'
         settings.NASA_EXTENDED_PROFILE_FIELDS = [

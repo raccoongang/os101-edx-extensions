@@ -1,12 +1,16 @@
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext as _
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from common.djangoapps import third_party_auth
 from common.djangoapps.third_party_auth import pipeline
 
-from .utils import split_full_name
+from .utils import split_full_name, get_orcid_provider_name
 from .models import ExtendedUserProfile
+
+
+User = get_user_model()
 
 
 def do_create_account(base_fn, *args, **kwargs):
@@ -115,3 +119,21 @@ def third_party_auth_context(*args, **kwargs):
                 break
 
     return context
+
+
+def get_account_settings(base_fn, request, usernames=None, configuration=None, view=None):
+    data = base_fn(request, usernames, configuration, view)
+    for user_data in data:
+        user = User.objects.get(email=user_data.get('email'))
+        extended_user_profile = ExtendedUserProfile.objects.filter(user=user).last()
+
+        orcid_id = extended_user_profile.orcid_id if extended_user_profile else ''
+        orcid_provider_name = get_orcid_provider_name(user)
+
+        orcid_profile_link = ''
+        if orcid_id and orcid_id != "none" and orcid_provider_name:
+            orcid_base_url = settings.ORCID_CONFIG.get('BASE_URL', {}).get(orcid_provider_name)
+            orcid_profile_link = f"{orcid_base_url}/{orcid_id}"
+
+        user_data['orcid_profile_link'] = orcid_profile_link
+    return data

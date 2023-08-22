@@ -15,3 +15,14 @@ def split_full_name(full_name):
     last_name = name_parts[-1] if len(name_parts) >= 2 else ''
 
     return first_name, middle_name, last_name
+
+
+def get_orcid_provider_name(user):
+    """
+    Returns provider name related to orcid.
+    """
+    orcid_providers = ['orcid', 'orcid-sandbox']
+    for social_auth in user.social_auth.all():
+        if social_auth.provider in orcid_providers:
+            return social_auth.provider
+    return None
