@@ -2,7 +2,8 @@
 -r base.txt
 
 pycodestyle
-pylint==2.5.3
+pylint
+pytest-django
 pytest
 pytest-cov
 pytest-stub

@@ -79,3 +79,5 @@ wrapt==1.13.3
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
+
+pytest-django==4.5.2

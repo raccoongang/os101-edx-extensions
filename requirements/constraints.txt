@@ -9,6 +9,6 @@
 # linking to it here is good.
 
 # TODO: Add constraint explanation
-pylint==2.5.3
-pycodestyle==2.5.0
+pylint
+pycodestyle
 django-admin-extra-buttons==1.5.5
