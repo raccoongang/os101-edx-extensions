@@ -1,6 +1,7 @@
 import logging
 from social_core.backends.orcid import ORCIDOAuth2, ORCIDMemberOAuth2Sandbox
 from django.core.exceptions import ValidationError
+from crum import get_current_request
 
 from ..models import ExtendedUserProfile
 
@@ -50,6 +51,15 @@ class ORCIDAuthMixin:
                                 break
                     else:
                         email = emails_list[0].get('email', '')
+
+        request = get_current_request()
+        email_to_update_orcid = ''
+        if request.user.is_anonymous:
+            email_to_update_orcid = email
+        else:
+            email_to_update_orcid = request.user.email
+
+        ExtendedUserProfile.objects.filter(user__email=email_to_update_orcid).update(orcid_id=orcid_id)
 
         return {
             'email': email,
