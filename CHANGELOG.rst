@@ -12,6 +12,12 @@ Change Log
 Unreleased
 ----------
 
+
+[v1.6.0] - 2023-09-06
+~~~~~~~~~~~~~~~~~~~~~
+* Sync ORCID ID with ExtendedUserProfile
+* Display ORCID ID in a profile
+
 [v1.5.4] - 2023-08-10
 ~~~~~~~~~~~~~~~~~~~~~
 * Override ORCID social core backend to correctly provide user information.
