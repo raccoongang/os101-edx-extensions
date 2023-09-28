@@ -13,6 +13,10 @@ Unreleased
 ----------
 
 
+[v1.7.0] - 2023-09-28
+~~~~~~~~~~~~~~~~~~~~~
+* Add override to filter courses on the index page
+
 [v1.6.0] - 2023-09-06
 ~~~~~~~~~~~~~~~~~~~~~
 * Sync ORCID ID with ExtendedUserProfile
