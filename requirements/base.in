@@ -1,3 +1,4 @@
 # Main requirements of your plugin application.
 -c constraints.txt
 
+django-admin-extra-buttons==1.5.5

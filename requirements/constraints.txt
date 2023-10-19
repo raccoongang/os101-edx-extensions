@@ -11,4 +11,3 @@
 # TODO: Add constraint explanation
 pylint
 pycodestyle
-django-admin-extra-buttons==1.5.5
