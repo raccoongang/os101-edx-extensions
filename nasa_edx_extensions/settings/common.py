@@ -40,3 +40,4 @@ def plugin_settings(settings):
     More info: https://github.com/edx/edx-platform/blob/master/openedx/core/djangoapps/plugins/README.rst
     """
     settings.OVERRIDE_INDEX_VIEW = "nasa_edx_extensions.overrides.override_index_django_view"
+    settings.OVERRIDE_GET_CERTIFICATES = "nasa_edx_extensions.overrides.override_get_certificates"
