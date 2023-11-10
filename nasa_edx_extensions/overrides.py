@@ -33,7 +33,10 @@ def override_index_django_view(base_fn, *args, **kwargs):
 def override_get_certificates(base_fn, self, request, username):  # pylint: disable=unused-argument
     user_certs = []
     if self._viewable_by_requestor(request, username):  # pylint: disable=protected-access
-        for badge_assertion in BadgeAssertion.objects.filter(badge_status__state=BadgeStatus.ACCEPTED):
+        for badge_assertion in BadgeAssertion.objects.filter(
+                badge_status__state=BadgeStatus.ACCEPTED,
+                user__username=username,
+        ):
             badge = BadgeDataModel(data=badge_assertion.data)
             badge.is_valid(raise_exception=True)
 
