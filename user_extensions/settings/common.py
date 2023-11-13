@@ -19,6 +19,10 @@ def plugin_settings(settings):
         'BASE_URL': {
             'orcid': 'https://orcid.org',
             'orcid-sandbox': 'https://sandbox.orcid.org',
+        },
+        'BASE_API_URL': {
+            'orcid': 'https://api.orcid.org/v3.0/',
+            'orcid-sandbox': 'https://api.sandbox.orcid.org/v3.0/',
         }
     }
     settings.ORCID_CONFIG = settings.ORCID_CONFIG if hasattr(settings, "ORCID_CONFIG") else default_orcid_config
