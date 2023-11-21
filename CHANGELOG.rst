@@ -12,6 +12,10 @@ Change Log
 Unreleased
 ----------
 
+[v1.8.0] - 2023-11-21
+~~~~~~~~~~~~~~~~~~~~~
+* Add ORCID api url to settings
+* Override certificate list view to display badge in profile
 
 [v1.7.0] - 2023-09-28
 ~~~~~~~~~~~~~~~~~~~~~
