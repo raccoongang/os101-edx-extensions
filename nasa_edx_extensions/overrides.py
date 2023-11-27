@@ -33,27 +33,30 @@ def override_index_django_view(base_fn, *args, **kwargs):
 def override_get_certificates(base_fn, self, request, username):  # pylint: disable=unused-argument
     user_certs = []
     if self._viewable_by_requestor(request, username):  # pylint: disable=protected-access
-        for badge_assertion in BadgeAssertion.objects.filter(
-                badge_status__state=BadgeStatus.ACCEPTED,
-                user__username=username,
-        ):
-            badge = BadgeDataModel(data=badge_assertion.data)
-            badge.is_valid(raise_exception=True)
+        badges_only = request.GET.get('badges_only', False)
+        if badges_only:
+            for badge_assertion in BadgeAssertion.objects.filter(
+                    badge_status__state=BadgeStatus.ACCEPTED,
+                    user__username=username,
+            ):
+                badge = BadgeDataModel(data=badge_assertion.data)
+                badge.is_valid(raise_exception=True)
 
-            user_certs.append({
-                'username': username,
-                'course_id': None,
-                'course_display_name': badge.data.get("badge_template").get("name"),
-                'course_organization': None,
-                'certificate_type': None,
-                'created_date': badge_assertion.created,
-                'modified_date': badge_assertion.created,
-                'status': None,
-                'is_passing': True,
-                'download_url': badge_assertion.assertion_url,
-                'grade': None,
-                'preview_image': badge_assertion.image_url,
-            })
+                user_certs.append({
+                    'username': username,
+                    'course_id': None,
+                    'course_display_name': badge.data.get("badge_template").get("name"),
+                    'course_organization': None,
+                    'certificate_type': None,
+                    'created_date': badge_assertion.created,
+                    'modified_date': badge_assertion.created,
+                    'status': None,
+                    'is_passing': True,
+                    'download_url': badge_assertion.assertion_url,
+                    'grade': None,
+                    'preview_image': badge_assertion.image_url,
+                })
+            return Response(user_certs)
         for user_cert in self._get_certificates_for_user(username):  # pylint: disable=protected-access
             certificate_extra = CertificateExtraData.objects.filter(course__id=user_cert.get('course_key')).first()
             course_display_name = (
