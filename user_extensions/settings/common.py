@@ -34,18 +34,10 @@ def plugin_settings(settings):
         settings.NASA_EXTENDED_PROFILE_FIELDS = [
             "orcid_id",
             "subscribe_to_emails",
-            "science_community",
-            "career_stage",
-            "extended_gender",
-            "race_ethnicity",
         ]
         settings.NASA_EXTENDED_PROFILE_EXTRA_FIELDS = {
             'orcid_id': 'required',
             'subscribe_to_emails': 'required',
-            'science_community': 'required',
-            'career_stage': 'required',
-            'extended_gender': 'required',
-            'race_ethnicity': 'required',
             "country": "optional",
         }
         settings.REGISTRATION_EXTRA_FIELDS.update(settings.NASA_EXTENDED_PROFILE_EXTRA_FIELDS)

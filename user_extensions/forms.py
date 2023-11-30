@@ -22,24 +22,12 @@ class ExtendedUserProfileForm(forms.ModelForm):
         fields = (
             'orcid_id',
             'subscribe_to_emails',
-            'science_community',
-            'career_stage',
-            'extended_gender',
-            'race_ethnicity',
         )
         labels = {
             'orcid_id': _('ORCID ID'),
-            'science_community': _('Scientific community'),
-            'career_stage': _('Career stage'),
-            'extended_gender': _('Gender'),
-            'race_ethnicity': _('Race / Ethnicity')
         }
         help_texts = {
             'orcid_id': _('If you do not have an ORCID ID, put <strong>"none"</strong>. ORCID ID must be in the format: "0000-0000-0000-0000"'),
-            'science_community': _('Please choose the scientific community with which you most identify.'),
-            'career_stage': _('Please indicate which career stage you most identify with.'),
-            'extended_gender': _('Please indicate your gender.'),
-            'race_ethnicity': _('Please indicate your race/ethnicity.'),
         }
 
     def __init__(self, *args, **kwargs):
