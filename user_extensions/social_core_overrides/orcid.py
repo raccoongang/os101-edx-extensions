@@ -37,6 +37,11 @@ class ORCIDAuthMixin:
                 fullname = first_name
                 if last_name:
                     fullname += f' {last_name}'
+                
+                # remove middle name from the first name
+                name_parts = first_name.split()
+                if len(name_parts) > 1:
+                    first_name = name_parts[0]
 
             emails = person.get('emails')
             if emails:

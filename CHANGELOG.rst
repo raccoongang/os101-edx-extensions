@@ -12,6 +12,19 @@ Change Log
 Unreleased
 ----------
 
+[v1.9.2] - 2023-12-28
+~~~~~~~~~~~~~~~~~~~~~
+* Fix when user has middle name in ORCID it's beiing duplicated
+on Credly badge
+
+[v1.9.1] - 2023-12-01
+~~~~~~~~~~~~~~~~~~~~~
+* Remove PII fields from registration form
+
+[v1.9.0] - 2023-11-27
+~~~~~~~~~~~~~~~~~~~~~
+* Filter badges or certificates using query parameter
+
 [v1.8.0] - 2023-11-21
 ~~~~~~~~~~~~~~~~~~~~~
 * Add ORCID api url to settings
